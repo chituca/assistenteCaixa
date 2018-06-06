@@ -1,5 +1,5 @@
 {
-  "name": "assistentecaixa",
+  "name": "assistente-caixa",
   "version": "1.0.0",
   "description": "Assistente Virtual Caixa - Google Assistente",
   "main": "app.js",
