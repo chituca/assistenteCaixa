@@ -15,6 +15,6 @@ app.get('/teste', function (req, res) {
 
 dialogflowwh.webhookCaixa(app);
 
-app.listen(3000, function () {
-  console.log('Caixa app listening on port 3000!');
+app.listen(process.env.PORT || 3000, function () {
+  console.log('Caixa server google assistente executando!');
 });
