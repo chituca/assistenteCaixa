@@ -1,0 +1,20 @@
+{
+  "name": "assistentecaixa",
+  "version": "1.0.0",
+  "description": "Assistente Virtual Caixa - Google Assistente",
+  "main": "app.js",
+  "scripts": {
+    "start": "pm2 start ecosystem.config.js --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "GEARQ02",
+  "license": "ISC",
+  "dependencies": {
+    "actions-on-google": "^2.1.2",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "log4js": "^2.7.0",
+    "pm2": "^2.10.4",
+    "request": "^2.87.0"
+  }
+}

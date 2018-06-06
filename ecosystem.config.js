@@ -1,0 +1,55 @@
+module.exports = {
+  /**
+   * Application configuration section
+   * http://pm2.keymetrics.io/docs/usage/application-declaration/
+   */
+  apps : [
+
+    // First application
+    {
+      name      : 'API',
+      script    : 'app.js',
+      watch     : true,
+      env: {
+        LOG_LEVEL: 'info',
+        PORT: 3000,
+        GATEWAY_ENDPOINT: 'https://api.caixa.gov.br:8443',
+        PATH_LOTERIAS:'/loterias/v2/resultados/',
+        QUERY_LOTERIAS: '?concurso='        
+      },
+      env_production : {
+        NODE_ENV: 'production',
+        PORT: 3000,
+        GATEWAY_ENDPOINT: 'https://api.caixa.gov.br:8443',
+        PATH_LOTERIAS:'/loterias/v2/resultados/',
+        QUERY_LOTERIAS: '?concurso='
+      }
+    }
+  ],
+
+  /**
+   * Deployment section
+   * http://pm2.keymetrics.io/docs/usage/deployment/
+   */
+  deploy : {
+    production : {
+      user : 'node',
+      host : '212.83.163.1',
+      ref  : 'origin/master',
+      repo : 'git@github.com:repo.git',
+      path : '/var/www/production',
+      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production'
+    },
+    dev : {
+      user : 'node',
+      host : '212.83.163.1',
+      ref  : 'origin/master',
+      repo : 'git@github.com:repo.git',
+      path : '/var/www/development',
+      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env dev',
+      env  : {
+        NODE_ENV: 'dev'
+      }
+    }
+  }
+};
